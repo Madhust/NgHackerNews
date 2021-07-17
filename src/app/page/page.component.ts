@@ -8,15 +8,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class PageComponent implements OnInit {
 
   @Input()
-  public direction: string;
+  public direction: string = '';
 
   @Input()
-  public pageNumber: number;
+  public pageNumber: number = 1;
 
   @Output()
   public pageNumberChanged: EventEmitter<number> = new EventEmitter<number>();
 
-  public isNext: boolean;
+  public isNext: boolean = false;
 
   constructor() { }
 
@@ -27,7 +27,7 @@ export class PageComponent implements OnInit {
   onClicked()
   {
     if (this.direction === "Previous") {
-      this.pageNumber = --this.pageNumber;
+      this.pageNumber = Math.max(1, --this.pageNumber);
     } else {
       this.pageNumber = ++this.pageNumber;
     }

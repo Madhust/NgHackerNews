@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Item } from 'app/item';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-item',
@@ -9,16 +9,16 @@ import { Item } from 'app/item';
 export class ItemComponent implements OnInit {
 
   @Input()
-  public item: Item;
-  public hasItem: boolean;
+  public item: Item = new Item();
+  public hasItem: boolean = false;
   constructor() { }
 
   ngOnInit() {
-    this.hasItem = this.item !== null && this.item.id !== undefined;
+    this.hasItem = this.item !== null && this.item.id !== -1;
   }
 
   navTo(item: Item) {
-    window.open(item.url, '_blank').focus(); 
-  } 
+    window.open(item.url, '_blank')!.focus(); 
+  }
 
 }

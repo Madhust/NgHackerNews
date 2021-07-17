@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from 'app/item';
-import { Observable } from 'rxjs';
+import { Item } from '../item';
+import { forkJoin, Observable } from 'rxjs';
 import { HackerNewsService} from '../hacker-news.service';
 
 @Component({
@@ -10,15 +10,16 @@ import { HackerNewsService} from '../hacker-news.service';
 })
 export class ContentComponent implements OnInit {
 
-  public items: Item[];
+  public items: Item[] = [];
   public service: HackerNewsService
-  public stories: number[];
+  public stories: number[] = [];
   public page: number = 1;
   public pageSize: number = 7;
   constructor(service: HackerNewsService) { this.service = service;}
 
   ngOnInit() {
-    this.items = [new Item(),new Item(),new Item(),new Item(),new Item(),new Item(),new Item()];
+    this.items = this.getLoadingItems();
+
     this.service.getStories().subscribe(i => {
       this.stories = i;
       this.fetchPagedStories(this.page);
@@ -28,16 +29,19 @@ export class ContentComponent implements OnInit {
 
   fetchPagedStories(pageNumber: number)
   {
-    this.items = [new Item(),new Item(),new Item(),new Item(),new Item(),new Item(),new Item()];
+    this.page = pageNumber;
+    this.items = this.getLoadingItems();
     let start = (pageNumber - 1) * this.pageSize;
     let end = start + this.pageSize;
     let articles: number[] = this.stories.slice(start, end);
 
     let obs: Observable<Item>[] = [];
     articles.forEach(x => obs.push(this.service.getItemById(x)));
-    Observable.forkJoin(...obs).subscribe(x => { 
+    forkJoin(obs).subscribe(x => { 
       this.items = x;
     });
   }
+
+  getLoadingItems(): Item[] { return [new Item(),new Item(),new Item(),new Item(),new Item(),new Item(),new Item()]; }
 
 }
