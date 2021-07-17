@@ -1,0 +1,11 @@
+<section>
+  <div class="view-banner">
+    <app-page direction="Previous" [pageNumber]="page" (pageNumberChanged)="fetchPagedStories($event)"></app-page>
+    <div class="view-banner-sub">
+    <ng-container  *ngFor="let item of items">
+      <app-item [item]="item"></app-item>
+    </ng-container>
+  </div>
+    <app-page direction="Next" [pageNumber]="page" (pageNumberChanged)="fetchPagedStories($event)"></app-page>
+  </div>
+</section>

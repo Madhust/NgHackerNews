@@ -1,0 +1,4 @@
+<div class="page-panel">
+  <i *ngIf="isNext" class="fas fa-arrow-circle-right" title={{direction}} (click)="onClicked()"></i>
+  <i *ngIf="!isNext" class="fas fa-arrow-circle-left" title={{direction}} (click)="onClicked()"></i>
+</div>

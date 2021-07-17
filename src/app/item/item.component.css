@@ -1,0 +1,58 @@
+div.item{
+    background-color: #f5f0e1;
+    width: 750px;
+    border: solid 1px #d6c3ab;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.card:hover h3{
+    text-decoration: underline;
+}
+
+.card {
+    padding: 6px;
+    background-color: #f1f1f1;
+  }
+
+.card:hover{
+    color: #f5f0e1;
+    background-color: #1e3d59;
+    cursor: pointer;
+}
+.card:hover p{
+    color: #ffc13b;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.card p {
+    margin-top: 2px;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 1200px) 
+{
+    div.item{
+        width: 750px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 950px)
+{
+    div.item{
+        width: 550px;
+    }
+}
+
+
+@media screen and (min-width:480px) and (max-width: 700px) 
+{
+    div.item{
+        width: 350px;
+    }
+}

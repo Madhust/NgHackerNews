@@ -1,0 +1,15 @@
+.page-panel {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin:auto;
+}
+
+.page-panel i {
+    font-size: 3em;
+    color: #1e3d59;
+}
+
+.page-panel i:hover {
+    color: #ff6e40;
+}

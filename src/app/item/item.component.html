@@ -1,0 +1,10 @@
+<div class="item card" (click)="navTo(item)">
+  <ng-container *ngIf="hasItem">
+    <h3>{{item.title}}</h3>
+    <p>{{item.score}} point by {{item.by}}</p>
+  </ng-container>
+  <ng-container *ngIf="!hasItem">
+    <h3>Loading...</h3>
+    <p>......................</p>
+  </ng-container>
+</div>
