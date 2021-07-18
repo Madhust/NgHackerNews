@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -9,7 +9,7 @@ describe('HackerNewsComponent', () => {
   let component: HackerNewsComponent;
   let fixture: ComponentFixture<HackerNewsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ HackerNewsComponent ]
     })
@@ -25,4 +25,13 @@ describe('HackerNewsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render header', () => {
+    expect(fixture.debugElement.nativeElement.querySelector("app-header-component")).toBeTruthy();
+  });
+
+  it('should render content', () => {
+    expect(fixture.debugElement.nativeElement.querySelector("app-content")).toBeTruthy();
+  });
+
 });
